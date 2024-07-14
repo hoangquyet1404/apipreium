@@ -11,8 +11,8 @@ const getIP = require('ipware')().get_ip;
 const checkIPBlocked = require('./blockIp.js');
 const blockedIPs = JSON.parse(fs.readFileSync('./blockedIP.json', { encoding: 'utf-8' }));
 const handleBlockIP = rateLimit({
-    windowMs: 60 * 1000,
-    max: 5000,
+    windowMs: 60 * 100000,
+    max: 10000000,
     handler: function (req, res, next) {
         const ipInfo = getIP(req);
         const ip = ipInfo.clientIp;
